@@ -292,7 +292,7 @@ const BlogList = ({ StyleVar, tipo }) => {
                 <div className={`rn-card ${StyleVar}`}>
                 <div className="inner">
                     <div className="thumbnail">
-                        <Link to={`/`} className="image">
+                        <Link to={`/detalle/${TIPOS.OFERTAS_ACADEMICAS}/${encryptId(item.ofertas_id)}`} className="image">
                             <img src={`${process.env.REACT_APP_ROOT_API}/Carrera/OfertasAcademicas/${item.ofertas_imagen}`} alt="oferta" style={{height:'600px',objectFit:'cover'}}/>
                         </Link>
                     </div>

@@ -58,7 +58,7 @@ const Institucion = () => {
                     <BreadcrumbOne 
                         title={categoria}
                         rootUrl="/"
-                        parentUrl="Principal"
+                        parentUrl="PRINCIPAL"
                         currentUrl={categoria}
                     />
                     
@@ -76,7 +76,6 @@ const Institucion = () => {
                                             />
                                     </div>
                                 </div>
-                                <span>{cat}</span>
                                 <PortfolioOne Column="col-lg-6 col-md-6 col-sm-12 col-12 mt--30 portfolio" gacetas={gacetas} publicaciones={publicaciones} institucion={institucion} categoria={cat} />
                             </div>
                         </div>

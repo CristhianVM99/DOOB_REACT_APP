@@ -79,18 +79,19 @@ const PortfolioOne = ({ Column, institucion = null, gacetas= null, publicaciones
     //const [dataVisibleCount, setDataVisibleCount] = useState(6);
     //const [dataIncrement] = useState(6) ;
     //const [noMorePost, setNoMorePost] = useState(false);
-    //const [activeFilter, setActiveFilter] = useState(categoria);
-    let tempData = getAllItems.filter(
-        (data) =>
-          data.category === categoria
-    );
-    const [visibleItems, setVisibleItems] = useState(tempData);
+    const [activeFilter, setActiveFilter] = useState(categoria);
+    // let tempData = getAllItems.filter(
+    //     (data) =>
+    //       data.category === categoria
+    // );
+    const [visibleItems, setVisibleItems] = useState([]);
     
     useEffect(() => {
         //setActiveFilter(categoria);
-        //setVisibleItems(getAllItems.filter((item) => item.id <= dataVisibleCount));
+        let tempData = getAllItems.filter((data) => data.category === categoria);
+        setVisibleItems(tempData);
 
-    }, []);
+    }, [categoria]);
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -124,7 +125,7 @@ const PortfolioOne = ({ Column, institucion = null, gacetas= null, publicaciones
                                     : " "
                                 }
                                 >
-                                {filter.text}
+                                {filter.text === TIPOS.INSTITUTO_INVESTIGACION ? "INSTITUTO DE INVESTIGACION" : filter.text }
                                 </button>
                             </li>
                             ))}
@@ -133,7 +134,7 @@ const PortfolioOne = ({ Column, institucion = null, gacetas= null, publicaciones
                 </div>
 
                 <div className="row row--15">
-                    {tempData.map((item) => (
+                    {visibleItems.map((item) => (
                         <div key={item.gaceta_id} className={Column}>
                             <PortfolioItem gaceta={item} />
                         </div>
