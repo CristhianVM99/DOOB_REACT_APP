@@ -1,23 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import CalltoActionSeven from "../../elements/calltoaction/CalltoActionSeven";
-import footerOne from "../../data/footer/footerOne.json";
 import ScrollTop from "./ScrollTop";
-import NewsletterOne from "./NewsletterOne";
 import { FiFacebook, FiTwitter, FiYoutube } from "react-icons/fi";
 import { getInstitucion, getStaticData } from '../../api/institucionAPI';
 import { useQuery } from '@tanstack/react-query';
-
-const footerIntem =  footerOne[0];
-const footerIntemOne =  footerOne[1];
-const footerIntemTwo =  footerOne[2];
-const footerIntemThree =  footerOne[3];
-const footerIntemFour =  footerOne[4];
-const footerIntemFive =  footerOne[5];
-
-const indexOneLink = (footerIntemOne.quicklink);
-const indexTwoLink = (footerIntemTwo.quicklink);
-const indexThreeLink = (footerIntemThree.quicklink);
+import { TIPOS } from '../../types/types';
 
 const FooterFour = () => {
 
@@ -36,15 +23,7 @@ const FooterFour = () => {
     if(!loading_institucion && !loading_static_data){
 
         /* DATOS DE LA INSTITUCION */
-        const {
-            institucion_correo1,
-            institucion_correo2,
-            institucion_celular1,
-            institucion_celular2,
-            institucion_telefono1,
-            institucion_telefono2,
-            institucion_logo,
-            institucion_direccion,
+        const {        
             institucion_nombre,
             institucion_facebook,
             institucion_youtube,
@@ -67,12 +46,13 @@ const FooterFour = () => {
                                 {/* Start Single Widget  */}
                                 <div className="col-lg-2 col-md-6 col-sm-6 col-12">
                                     <div className="rn-footer-widget">
-                                        <h4 className="title">{footerIntemOne.title}</h4>
+                                        <h4 className="title">Academia</h4>
                                         <div className="inner">
                                             <ul className="footer-link link-hover">
-                                                {indexOneLink.map((data, index) => (
-                                                    <li key={index}><Link to={`${data.url}`}>{data.text}</Link></li>
-                                                ))}
+                                                <li><Link to={`/academia/${TIPOS.CALENDARIO}`}>Calendario Académico</Link></li>
+                                                <li><Link to={`/academia/${TIPOS.HORARIO}`}>Horario</Link></li>
+                                                <li><Link to={`/academia/${TIPOS.PLANESTUDIO}`}>Plan de Estudio</Link></li>
+                                                <li><Link to={`/academia/${TIPOS.REGLAMENTO}`}>Reglamento mod. de Graduacion</Link></li>                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -83,12 +63,13 @@ const FooterFour = () => {
                                 <div className="col-lg-2 col-md-6 col-sm-6 col-12">
                                     <div className="rn-footer-widget">
                                         <div className="widget-menu-top">
-                                            <h4 className="title">{footerIntemTwo.title}</h4>
+                                            <h4 className="title">Institución</h4>
                                             <div className="inner">
                                                 <ul className="footer-link link-hover">
-                                                    {indexThreeLink.map((data, index) => (
-                                                        <li key={index}><Link to={`${data.url}`}>{data.text}</Link></li>
-                                                    ))}
+                                                    <li><Link to={`/institucion/${TIPOS.CONVENIOS}`}>Convenios Institucionales</Link></li>
+                                                    <li><Link to={`/institucion/${TIPOS.PASANTIAS}`}>Pasantías</Link></li>
+                                                    <li><Link to={`/institucion/${TIPOS.TRABAJOS}`}>Trabajos Dirigidos</Link></li>
+                                                    <li><Link to={`/institucion/${TIPOS.INSTITUTO_INVESTIGACION}`}>Instituto de Investigación</Link></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -99,12 +80,13 @@ const FooterFour = () => {
                                 {/* Start Single Widget  */}
                                 <div className="col-lg-2 col-md-6 col-sm-6 col-12">
                                     <div className="rn-footer-widget">
-                                        <h4 className="title">{footerIntemThree.title}</h4>
+                                        <h4 className="title">Convocatorias y Cursos</h4>
                                         <div className="inner">
                                             <ul className="footer-link link-hover">
-                                                {indexTwoLink.map((data, index) => (
-                                                    <li key={index}><Link to={`${data.url}`}>{data.text}</Link></li>
-                                                ))}
+                                                <li><Link to={`/recursos/${TIPOS.CONVOCATORIAS}`}>Convocatorias</Link></li>
+                                                <li><Link to={`/recursos/${TIPOS.COMUNICADOS}`}>Comunicados</Link></li>
+                                                <li><Link to={`/recursos/${TIPOS.AVISOS}`}>Avisos</Link></li>
+                                                <li><Link to={`/recursos/${TIPOS.SEMINARIOS}`}>Cursos</Link></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -114,12 +96,15 @@ const FooterFour = () => {
                                 {/* Start Single Widget  */}
                                 <div className="col-lg-2 col-md-6 col-sm-6 col-12">
                                     <div className="rn-footer-widget">
-                                        <h4 className="title">{footerIntemFour.title}</h4>
+                                        <h4 className="title">Más</h4>
                                         <div className="inner">
                                             <ul className="footer-link link-hover">
-                                                {indexTwoLink.map((data, index) => (
-                                                    <li key={index}><Link to={`${data.url}`}>{data.text}</Link></li>
-                                                ))}
+                                                <li><Link to={`/recursos/${TIPOS.SERVICIOS}`}>Servicios</Link></li>
+                                                <li><Link to={`/recursos/${TIPOS.OFERTAS_ACADEMICAS}`}>Ofertas Académicas</Link></li>
+                                                <li><Link to={`/recursos/${TIPOS.PUBLICACIONES}`}>Publicaciones</Link></li>
+                                                <li><Link to={`/recursos/${TIPOS.GACETAS}`}>Gacetas</Link></li>
+                                                <li><Link to={`/recursos/${TIPOS.EVENTOS}`}>Eventos</Link></li>
+                                                <li><Link to={`/recursos/${TIPOS.VIDEOS}`}>Videos</Link></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -144,22 +129,21 @@ const FooterFour = () => {
                             </div>
                         </div>
                     </div>
-                    <NewsletterOne newsletetrStyle="rn-newsletter-default" extraClass="border-top-bottom" />
                     <div className="copyright-area copyright-style-one no-border">
                         <div className="container">
                             <div className="row align-items-center">
                                 <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div className="copyright-left">
                                         <ul className="ft-menu link-hover">
-                                            <li><a href="#">Privacy Policy</a></li>
-                                            <li><a href="#">Terms And Condition</a></li>
-                                            <li><a href="/contact">Contact Us</a></li>
+                                            <li><span>Universidad Pública de El Alto</span></li>
+                                            <li><span>{institucion_nombre}</span></li>
+                                            <li><a target='_blank' rel="noopener noreferrer" href='https://www.linkedin.com/in/cristhian-villca-mamani-06933b251/'>Web Developer <span>CristhianVM</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div className="copyright-right text-center text-md-end">
-                                        <p className="copyright-text">© Doob {new Date().getFullYear()}</p>
+                                        <p className="copyright-text"><a target='_blank' rel="noopener noreferrer" href='https://sie.upea.bo/l'>© SIE {new Date().getFullYear()}</a></p>
                                     </div>
                                 </div>
                             </div>

@@ -17,14 +17,15 @@ const BlogDetailsContent = ({ data }) => {
                         <div className="col-lg-8 offset-lg-2">
                             <div className="content text-center">
                                 <div className="page-title">
-                                    <h1 className="theme-gradient">{data.title}</h1>
+                                    <h1 className="theme-gradient">{`data.title`}</h1>
+                                    <p>HOlaaaa</p>
                                 </div>
                                 <ul className="rn-meta-list">
-                                    <li><FiUser /><Link to={process.env.PUBLIC_URL + `/archive/${slugify(data.author)}`}>{data.author}</Link></li>
-                                    <li><FiCalendar />{data.date}</li>
+                                    <li><FiUser /><Link to={"/"}>{`data.author`}</Link></li>
+                                    <li><FiCalendar />{`data.date`}</li>
                                 </ul>
                                 <div className="thumbnail alignwide mt--60">
-                                    <img className="w-100 radius" src={`${process.env.PUBLIC_URL}/${data.largeImage}`} alt="Blog Images" />
+                                    <img className="w-100 radius" src={"/"} alt="Blog Images" />
                                 </div>
                             </div>
                         </div>
@@ -62,11 +63,6 @@ const BlogDetailsContent = ({ data }) => {
                     </div>
                 </div>
             </div>
-
-                              
-
-
-
         </>
     )
 }

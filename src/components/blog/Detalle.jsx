@@ -10,7 +10,7 @@ import SidebarTag from './sidebar/SidebarTag';
 import SidebarArchive from './sidebar/SidebarArchive';
 
 
-const BlogGridSidebar = () => {
+const Detalle = () => {
     return (
         <>
             <SEO title="Blog Grid Sidebar || Doob - React Business  Template" />
@@ -99,4 +99,4 @@ const BlogGridSidebar = () => {
     )
 }
 
-export default BlogGridSidebar
+export default Detalle;

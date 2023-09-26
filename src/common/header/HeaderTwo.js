@@ -14,13 +14,7 @@ const HeaderTwo = ({btnStyle, HeaderSTyle}) => {
     const { isLoading: loading_institucion, data: institucion } = useQuery({
       queryKey: ["institucion"],
       queryFn: getInstitucion,
-    });
-
-    /* OBTENCION DE INFORMACION DEL STORE STATICO */
-    const { isLoading: loading_static_data, data: staticData } = useQuery({
-      queryKey: ["staticData"],
-      queryFn: getStaticData,
-    });
+    });    
 
     const [ofcanvasShow, setOffcanvasShow] = useState(false);
     const onCanvasHandler = () => {
@@ -39,16 +33,10 @@ const HeaderTwo = ({btnStyle, HeaderSTyle}) => {
     };
 
 
-    if(!loading_institucion && !loading_static_data){
+    if(!loading_institucion ){
         /* DATOS DE LA INSTITUCION */
         const {
-            institucion_correo1,
-            institucion_celular1,
-            institucion_logo,
-            institucion_direccion,
-            institucion_facebook,
-            institucion_youtube,
-            institucion_twitter,
+            institucion_logo,            
         } = institucion;
 
         return (

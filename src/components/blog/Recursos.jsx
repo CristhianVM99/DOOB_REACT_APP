@@ -3,25 +3,29 @@ import SEO from "../../common/SEO";
 import Layout from "../../common/Layout";
 import BreadcrumbOne from "../../elements/breadcrumb/BreadcrumbOne";
 import BlogProp from './itemProp/BlogProp';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 
-const BlogGridView = () => {
+const Recursos = () => {
+
+    const { cat } = useParams();
+
     return (
         <>
             <SEO title="Blog List || Doob - React Business  Template" />
             <Layout>
                 <BreadcrumbOne 
-                    title="The Easiest Way To Create Website <br /> Quick Copy & Make site."
+                    title={cat=== "OFERTAS_ACADEMICAS" ? "OFERTAS ACADÉMICAS" : cat}
                     rootUrl="/"
-                    parentUrl="Home"
-                    currentUrl="Blog List"
+                    parentUrl="INICIO"
+                    currentUrl={cat=== "OFERTAS_ACADEMICAS" ? "OFERTAS ACADÉMICAS" : cat}
                 />
                 <div className="main-content">
                     {/* Start Blog Area  */}
                     <div className="rn-blog-area rn-section-gap">
                         <div className="container">
                             <div className="row mt_dec--30">
-                                <BlogProp column="col-lg-4 col-md-6 col-12 mt--30" StyleVarProp="box-card-style-default" />
+                                <BlogProp column="col-lg-4 col-md-6 col-12 mt--30" StyleVarProp="box-card-style-default" cat={cat} />
                             </div>
                         </div>
                     </div>
@@ -31,4 +35,4 @@ const BlogGridView = () => {
         </>
     )
 }
-export default BlogGridView;
+export default Recursos;

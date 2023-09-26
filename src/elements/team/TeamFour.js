@@ -2,6 +2,8 @@ import React from 'react';
 import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from "react-icons/fi";
 import {Link} from "react-router-dom";
 import ScrollAnimation from "react-animate-on-scroll";
+import { getInstitucion } from '../../api/institucionAPI';
+import { useQuery } from '@tanstack/react-query';
 
 const teamData = [
     {
@@ -96,34 +98,48 @@ const teamData = [
 
 
 const TeamFour = ({column , teamStyle}) => {
-    return (
-        <div className="row row--15">
-            {teamData.map((data, index) => (
-                <div className={`${column}`} key={index}>
-                    <ScrollAnimation 
-                    animateIn="fadeInUp"
-                    animateOut="fadeInOut"
-                    animateOnce={true}>
-                        <div className={`rn-team ${teamStyle}`}>
-                            <div className="inner">
-                                <figure className="thumbnail">
-                                    <img src={`./images/team/${data.image}.jpg`} alt="Corporate React Template" />
-                                </figure>
-                                <figcaption className="content">
-                                    <div className="team-info">
-                                        <h2 className="title">{data.name}</h2>
-                                        <h6 className="subtitle theme-gradient">{data.designation}</h6>
-                                        <div className="team-form">
-                                            <span className="location">{data.location}</span>
+    
+    /* OBTENCION DE INFORMACION DEL STORE API */
+    const { isLoading: loading_institucion, data: institucion } = useQuery({
+        queryKey: ["institucion"],
+        queryFn: getInstitucion,
+    }); 
+
+    if(!loading_institucion){
+
+        /* INFORMACION DE LA INSTITUCION */
+        const { autoridad, institucion_nombre } = institucion;
+
+        return (
+            <div className="row row--15">
+                {autoridad.map((item, index) => (
+                    <div className={`${column}`} key={index}>
+                        <ScrollAnimation 
+                        animateIn="fadeInUp"
+                        animateOut="fadeInOut"
+                        animateOnce={true}>
+                            <div className={`rn-team ${teamStyle}`}>
+                                <div className="inner">
+                                    <figure className="thumbnail">
+                                        <img src={`${process.env.REACT_APP_ROOT_API}/InstitucionUpea/Autoridad/${item.foto_autoridad}`} alt="Corporate React Template" style={{height:'400px',objectFit:'cover'}}/>
+                                    </figure>
+                                    <figcaption className="content">
+                                        <div className="team-info">
+                                            <h2 className="title">{institucion_nombre}</h2>
+                                            <h6 className="subtitle theme-gradient">{item.nombre_autoridad}</h6>
+                                            <div className="team-form">
+                                                <span className="location">{item.cargo_autoridad}</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </figcaption>
+                                    </figcaption>
+                                </div>
                             </div>
-                        </div>
-                    </ScrollAnimation>
-                </div>
-            ))}
-        </div>
-    )
+                        </ScrollAnimation>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+    return null
 }
 export default TeamFour;

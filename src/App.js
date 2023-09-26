@@ -27,7 +27,7 @@ import WebAgency from "./pages/WebAgency";
 import CategoryList from "./pages/CategoryList";
 import TagList from "./pages/TagList";
 import Author from "./pages/Author";
-import AboutUs from "./pages/AboutUs";
+import SobreNosotros from "./pages/SobreNosotros";
 
 // Elements import Here 
 
@@ -37,7 +37,7 @@ import Service from "./elements/service/Service";
 import CounterUp from "./elements/counterup/CounterUp";
 import Progressbar from "./elements/progressbar/Progressbar";
 
-import Portfolio from "./elements/portfolio/Portfolio";
+import Institucion from "./elements/portfolio/Institucion";
 import portfolioThreeColumn from "./elements/portfolio/PortfolioThreeColumn";
 import PortfolioFullWidth from "./elements/portfolio/PortfolioFullWidth";
 import PortfolioGrid from "./elements/portfolio/PortfolioGrid";
@@ -50,7 +50,7 @@ import Testimonial from "./elements/testimonial/Testimonial";
 import RnAccordion from "./elements/accordion/RnAccordion";
 import Tab from "./elements/tab/Tab";
 import Pricing from "./elements/pricing/Pricing";
-import Split from "./elements/split/Split";
+import Academia from "./elements/split/Academia";
 import CalltoAction from "./elements/calltoaction/CalltoAction";
 import Video from "./elements/video/Video";
 import Gallery from "./elements/gallery/Gallery";
@@ -60,11 +60,11 @@ import AdvanceTab from "./elements/advancetab/AdvanceTab";
 import AdvancePricing from "./elements/advancePricing/AdvancePricing";
 
 
-import BlogGridView from "./components/blog/BlogGridView";
+import Recursos from "./components/blog/Recursos";
 import BlogListView from "./components/blog/BlogListView";
-import BlogGridSidebar from "./components/blog/BlogGridSidebar";
+import Detalle from "./components/blog/Detalle";
 import BlogListSidebar from "./components/blog/BlogListSidebar";
-import BlogDetails from "./pages/BlogDetails";
+import BlogDetail from "./pages/BlogDetail";
 import Error from "./pages/Error";
 
 
@@ -78,6 +78,12 @@ const App = () => {
             <PageScrollTop>
                 <Switch>
                     <Route path={`${process.env.PUBLIC_URL + "/"}`} exact component={Principal}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/sobreNosotros"}`} exact component={SobreNosotros}/>                    
+                    <Route path={`${process.env.PUBLIC_URL + "/academia/:cat"}`} exact component={Academia}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/institucion/:cat"}`} exact component={Institucion}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/recursos/:cat"}`} exact component={Recursos}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/detalle/:cat/:id"}`} exact component={Detalle}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/contacto"}`} exact component={Contact}/>
                     <Route path={`${process.env.PUBLIC_URL + "/business-consulting"}`} exact component={HomeDefault}/>
                     <Route path={`${process.env.PUBLIC_URL + "/business-consulting-2"}`} exact component={BusinessConsulting2}/>
                     <Route path={`${process.env.PUBLIC_URL + "/corporate"}`} exact component={Corporate}/>
@@ -98,11 +104,11 @@ const App = () => {
                     <Route path={`${process.env.PUBLIC_URL + "/web-agency"}`} exact component={WebAgency}/>
 
                     {/* Blog Part  */}
-                    <Route path={`${process.env.PUBLIC_URL + "/blog-grid"}`} exact component={BlogGridView}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/blog-grid"}`} exact component={Recursos}/>
                     <Route path={`${process.env.PUBLIC_URL + "/blog-list-view"}`} exact component={BlogListView}/>
-                    <Route path={`${process.env.PUBLIC_URL + "/blog-grid-sidebar"}`} exact component={BlogGridSidebar}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/blog-grid-sidebar"}`} exact component={Detalle}/>
                     <Route path={`${process.env.PUBLIC_URL + "/blog-list-sidebar"}`} exact component={BlogListSidebar}/>
-                    <Route path={`${process.env.PUBLIC_URL + "/blog-details/:id"}`} exact component={BlogDetails}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/blog-details/:id"}`} exact component={BlogDetail}/>
                     <Route path={`${process.env.PUBLIC_URL + "/category/:slug"}`} exact component={CategoryList}/>
                     <Route path={`${process.env.PUBLIC_URL + "/archive/:slug"}`} exact component={Author}/>
                     <Route path={`${process.env.PUBLIC_URL + "/tag/:slug"}`} exact component={TagList}/>
@@ -119,7 +125,7 @@ const App = () => {
                     <Route path={`${process.env.PUBLIC_URL + "/accordion"}`} exact component={RnAccordion}/>
                     <Route path={`${process.env.PUBLIC_URL + "/tab"}`} exact component={Tab}/>
                     <Route path={`${process.env.PUBLIC_URL + "/pricing"}`} exact component={Pricing}/>
-                    <Route path={`${process.env.PUBLIC_URL + "/split"}`} exact component={Split}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/split"}`} exact component={Academia}/>
                     <Route path={`${process.env.PUBLIC_URL + "/call-to-action"}`} exact component={CalltoAction}/>
                     <Route path={`${process.env.PUBLIC_URL + "/video-popup"}`} exact component={Video}/>
                     <Route path={`${process.env.PUBLIC_URL + "/gallery"}`} exact component={Gallery}/>
@@ -127,11 +133,11 @@ const App = () => {
                     <Route path={`${process.env.PUBLIC_URL + "/brand"}`} exact component={Brand}/>
                     <Route path={`${process.env.PUBLIC_URL + "/advance-tab"}`} exact component={AdvanceTab}/>
                     <Route path={`${process.env.PUBLIC_URL + "/advance-pricing"}`} exact component={AdvancePricing}/>
-                    <Route path={`${process.env.PUBLIC_URL + "/about-us"}`} exact component={AboutUs}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/about-us"}`} exact component={SobreNosotros}/>
 
                     <Route path={`${process.env.PUBLIC_URL + "/error"}`} exact component={Error}/>
                     
-                    <Route path={`${process.env.PUBLIC_URL + "/portfolio"}`} exact component={Portfolio}/>
+                    <Route path={`${process.env.PUBLIC_URL + "/portfolio"}`} exact component={Institucion}/>
                     <Route path={`${process.env.PUBLIC_URL + "/portfolio-three-column"}`} exact component={portfolioThreeColumn}/>
                     <Route path={`${process.env.PUBLIC_URL + "/portfolio-full-width"}`} exact component={PortfolioFullWidth}/>
                     <Route path={`${process.env.PUBLIC_URL + "/portfolio-grid-layout"}`} exact component={PortfolioGrid}/>

@@ -3,10 +3,12 @@ import BlogClassicData from '../../../data/blog/BlogList.json';
 import BlogList from './BlogList';
 import { FaSpinner } from "react-icons/fa";
 import filters from "./Filters";
+import { TIPOS } from "../../../types/types";
 
 
 const alldataBLog = BlogClassicData;
-const BlogProp = ({ column , StyleVarProp}) => {
+const BlogProp = ({ column , StyleVarProp, cat}) => {        
+
     const [getAllItems] = useState(alldataBLog);
     const [dataVisibleCount, setDataVisibleCount] = useState(6);
     const [dataIncrement] = useState(3) ;
@@ -40,13 +42,22 @@ const BlogProp = ({ column , StyleVarProp}) => {
     
     return (
         <>
-            <div className="col-lg-12">
-                <div className="row row--15">
-                    {visibleItems.map((item) => (
-                        <div key={item.id} className={column}>
-                            <BlogList StyleVar={StyleVarProp} data={item} />
-                        </div>
-                    ))}
+            {
+            cat === TIPOS.SERVICIOS || 
+            cat === TIPOS.OFERTAS_ACADEMICAS || 
+            cat === TIPOS.PUBLICACIONES || 
+            cat === TIPOS.GACETAS || 
+            cat === TIPOS.EVENTOS ||
+            cat === TIPOS.VIDEOS ||
+            cat === TIPOS.CONVOCATORIAS ||
+            cat === TIPOS.COMUNICADOS || 
+            cat === TIPOS.AVISOS ||
+            cat === TIPOS.CURSOS ||
+            cat === TIPOS.SEMINARIOS ? 
+            (<>
+                <div className="col-lg-12">
+                <div className="row row--15">                        
+                    <BlogList StyleVar={StyleVarProp} tipo={cat}/>
                 </div>
             </div>
             <div className="col-lg-12 text-center">
@@ -69,8 +80,10 @@ const BlogProp = ({ column , StyleVarProp}) => {
                     </button>
                 </div>
             </div>
+            </>) : null}            
         </>
     )
+
 }
 
 export default BlogProp;

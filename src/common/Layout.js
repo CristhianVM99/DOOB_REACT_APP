@@ -8,7 +8,7 @@ const Layout = ({children}) => {
     return (
         <>
             <main className="page-wrapper">
-                <HeaderTopNews />
+                {/* <HeaderTopNews /> */}
                 <HeaderOne btnStyle="btn-small round btn-icon" HeaderSTyle="header-not-transparent" />
                 {children}
                 <FooterTwo />
