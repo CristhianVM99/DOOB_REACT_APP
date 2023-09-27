@@ -13,6 +13,7 @@ import { getGacetas, getInstitucion, getStaticDataAcademia, getStaticImages } fr
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { TIPOS } from '../../types/types';
 import sinRegistros from '../../common/SinRegistros';
+//import { Document, Page, pdfjs } from "react-pdf";
 
 
 const Split = () => {    
@@ -50,6 +51,10 @@ const Split = () => {
   } else {
     categoria = cat;
   }      
+
+  useEffect(()=>{
+    //pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+  })
 
     if(!loading_institucion && !loading_images && !loading_static_data && !loading_gacetas){
 
@@ -117,7 +122,14 @@ const Split = () => {
                                             description = ""
                                         />
                                     </div>
-                                </div> */}                                
+                                </div> */}            
+                                {/* <Document
+                                    file={`${process.env.REACT_APP_ROOT_API}/Gaceta/${
+                                      item.gaceta_documento
+                                    }`}
+                                  >
+                                    <Page pageNumber={1} width={400} />
+                                </Document>                     */}
                                 <span>{`${process.env.REACT_APP_ROOT_API}/Gaceta/${item.gaceta_documento}`}</span>
                                 <SlpitOne title={item.gaceta_titulo} description={content} img={img ?? images.BgOne}/>                                
                             </div>
