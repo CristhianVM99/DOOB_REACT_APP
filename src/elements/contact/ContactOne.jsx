@@ -4,6 +4,7 @@ import GoogleMapStyle from "./GoogleMapStyle";
 import { FiHeadphones , FiMail , FiMapPin } from "react-icons/fi";
 import { getInstitucion, getStaticImages } from '../../api/institucionAPI';
 import { useQuery } from '@tanstack/react-query';
+import RandomImage from '../../utils/RandomImage';
 
 const ContactOne = () => {
 
@@ -33,10 +34,8 @@ const ContactOne = () => {
             institucion_iniciales,
             portada,
         } = institucion;
-
-        const indiceAleatorio = Math.floor(Math.random() * portada.length);
-        const imagenSeleccionada = portada[indiceAleatorio].portada_imagen;
-        const img = `${process.env.REACT_APP_ROOT_API}/InstitucionUpea/Portada/${imagenSeleccionada}`;
+        
+        const img = RandomImage(portada)
 
         return (
             <>

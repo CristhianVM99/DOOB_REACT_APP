@@ -13,6 +13,7 @@ import TimelineTwo from "../elements/timeline/TimelineTwo";
 import Separator from "../elements/separator/Separator";
 import { getInstitucion, getStaticImages } from '../api/institucionAPI';
 import { useQuery } from '@tanstack/react-query';
+import RandomImage from '../utils/RandomImage';
 
 const SobreNosotros = () => {
 
@@ -26,10 +27,15 @@ const SobreNosotros = () => {
     const { isLoading: loading_institucion, data: institucion } = useQuery({
         queryKey: ["institucion"],
         queryFn: getInstitucion,
-    });
+    });    
 
     if(!loading_images && !loading_institucion){
         const { institucion_nombre, institucion_iniciales, institucion_historia } = institucion
+
+        const {portada} = institucion
+        const img = RandomImage(portada)
+        const img2 = RandomImage(portada)
+
         return (
             <>
                 <SEO title="About Us" />
@@ -38,7 +44,7 @@ const SobreNosotros = () => {
                     <HeaderOne btnStyle="btn-small round btn-icon" HeaderSTyle="header-transparent" />
     
                     {/* Start Slider Area  */}
-                    <div className="slider-area slider-style-1 height-850 bg_image" data-black-overlay="7" style={{backgroundImage: `url(${images.BgOne})`}}>
+                    <div className="slider-area slider-style-1 height-850 bg_image" data-black-overlay="7" style={{backgroundImage: `url(${img ?? images.BgOne})`}}>
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-12">
@@ -72,7 +78,7 @@ const SobreNosotros = () => {
                     </div>
                     {/* End Service Area  */}
     
-                    <AboutFour image={images.BgTwo} />
+                    <AboutFour image={img2 ?? images.BgTwo} />
     
                     {/* Start Brand Area  */}
                     <div className="rwt-brand-area pb--60 pt--30">

@@ -200,18 +200,18 @@ const BlogList = ({ StyleVar, tipo }) => {
                 <div className={`rn-card ${StyleVar}`}>
                 <div className="inner">
                     <div className="thumbnail">
-                        <Link to={`/`} className="image">
+                        <Link to={`/detalle/${tipo}/${encryptId(item.idconvocatorias)}`} className="image">
                             <img src={`${process.env.REACT_APP_ROOT_API}/Convocatorias/${item.con_foto_portada}`} alt={`Convocatoria`} style={{height:'600px',objectFit:'cover'}}/>
                         </Link>
                     </div>
                     <div className="content">
                         <ul className="rn-meta-list">
-                            <li><Link to={`/`}>{item.tipo_conv_comun.tipo_conv_comun_titulo}</Link></li>
+                            <li><Link to={`/detalle/${tipo}/${encryptId(item.idconvocatorias)}`}>{item.tipo_conv_comun.tipo_conv_comun_titulo}</Link></li>
                             <li className="separator">/</li>
                             <li>{formatearFecha(item.con_fecha_inicio)}</li>
                         </ul>
                         <h4 className="title">
-                            <Link to={`/`}>
+                            <Link to={`/detalle/${tipo}/${encryptId(item.idconvocatorias)}`}>
                                 {item.con_titulo}
                             </Link>
                         </h4>
@@ -234,18 +234,18 @@ const BlogList = ({ StyleVar, tipo }) => {
                 <div className={`rn-card ${StyleVar}`}>
                 <div className="inner">
                     <div className="thumbnail">
-                        <Link to={`/`} className="image">
+                        <Link to={`/detalle/${tipo}/${encryptId(item.iddetalle_cursos_academicos)}`} className="image">
                             <img src={`${process.env.REACT_APP_ROOT_API}/Cursos/${item.det_img_portada}`} alt="curso" style={{height:'600px',objectFit:'cover'}}/>
                         </Link>
                     </div>
                     <div className="content">
                         <ul className="rn-meta-list">
-                            <li><Link to={`/`}>{item.tipo_curso_otro.tipo_conv_curso_nombre}</Link></li>
+                            <li><Link to={`/detalle/${tipo}/${encryptId(item.iddetalle_cursos_academicos)}`}>{item.tipo_curso_otro.tipo_conv_curso_nombre}</Link></li>
                             <li className="separator">/</li>
                             <li>{formatearFecha(item.det_fecha_ini)}</li>
                         </ul>
                         <h4 className="title">
-                            <Link to={`/`}>
+                            <Link to={`/detalle/${tipo}/${encryptId(item.iddetalle_cursos_academicos)}`}>
                                 {item.det_titulo}
                             </Link>
                         </h4>
@@ -269,12 +269,12 @@ const BlogList = ({ StyleVar, tipo }) => {
                     </div>
                     <div className="content">
                         <ul className="rn-meta-list">
-                            <li><Link to={`/`}>{tipo}</Link></li>
+                            <li><Link to={`/detalle/${TIPOS.SERVICIOS}/${encryptId(item.serv_id)}`}>{tipo}</Link></li>
                             <li className="separator">/</li>
                             <li>{formatearFecha(item.serv_registro)}</li>
                         </ul>
                         <h4 className="title">
-                            <Link to={`/`}>
+                            <Link to={`/detalle/${TIPOS.SERVICIOS}/${encryptId(item.serv_id)}`}>
                                 {item.serv_nombre}
                             </Link>
                         </h4>
@@ -298,12 +298,12 @@ const BlogList = ({ StyleVar, tipo }) => {
                     </div>
                     <div className="content">
                         <ul className="rn-meta-list">
-                            <li><Link to={`/`}>{tipo==="OFERTAS_ACADEMICAS"?"OFERTAS ACADEMÍCAS" : tipo}</Link></li>
+                            <li><Link to={`/detalle/${TIPOS.OFERTAS_ACADEMICAS}/${encryptId(item.ofertas_id)}`}>{tipo==="OFERTAS_ACADEMICAS"?"OFERTAS ACADEMÍCAS" : tipo}</Link></li>
                             <li className="separator">/</li>
                             <li>{formatearFecha(item.ofertas_inscripciones_ini)}</li>
                         </ul>
                         <h4 className="title">
-                            <Link to={`/`}>
+                            <Link to={`/detalle/${TIPOS.OFERTAS_ACADEMICAS}/${encryptId(item.ofertas_id)}`}>
                                 {item.ofertas_titulo}
                             </Link>
                         </h4>
@@ -321,18 +321,18 @@ const BlogList = ({ StyleVar, tipo }) => {
                 <div className={`rn-card ${StyleVar}`}>
                 <div className="inner">
                     <div className="thumbnail">
-                        <Link to={`/`} className="image">
+                        <Link to={`/detalle/${TIPOS.PUBLICACIONES}/${encryptId(item.publicaciones_id)}`} className="image">
                             <img src={`${process.env.REACT_APP_ROOT_API}/Publicaciones/${item.publicaciones_imagen}`} alt="oferta" style={{height:'600px',objectFit:'cover'}}/>
                         </Link>
                     </div>
                     <div className="content">
                         <ul className="rn-meta-list">
-                            <li><Link to={`/`}>{tipo}</Link></li>
+                            <li><Link to={`/detalle/${TIPOS.PUBLICACIONES}/${encryptId(item.publicaciones_id)}`}>{tipo}</Link></li>
                             <li className="separator">/</li>
                             <li>{formatearFecha(item.publicaciones_fecha)}</li>
                         </ul>
                         <h4 className="title">
-                            <Link to={`/`}>
+                            <Link to={`/detalle/${TIPOS.PUBLICACIONES}/${encryptId(item.publicaciones_id)}`}>
                                 {item.publicaciones_titulo}
                             </Link>
                         </h4>
@@ -379,18 +379,18 @@ const BlogList = ({ StyleVar, tipo }) => {
                 <div className={`rn-card ${StyleVar}`}>
                 <div className="inner">
                     <div className="thumbnail">
-                        <Link to={`/`} className="image">
+                        <Link to={`/detalle/${TIPOS.EVENTOS}/${encryptId(item.evento_id)}`} className="image">
                             <img src={`${process.env.REACT_APP_ROOT_API}/Eventos/${item.evento_imagen}`} alt="oferta" style={{height:'600px',objectFit:'cover'}}/>
                         </Link>
                     </div>
                     <div className="content">
                         <ul className="rn-meta-list">
-                            <li><Link to={`/`}>{tipo}</Link></li>
+                            <li><Link to={`/detalle/${TIPOS.EVENTOS}/${encryptId(item.evento_id)}`}>{tipo}</Link></li>
                             <li className="separator">/</li>
                             <li>{formatearFecha(item.evento_fecha)}</li>
                         </ul>
                         <h4 className="title">
-                            <Link to={`/`}>
+                            <Link to={`/detalle/${TIPOS.EVENTOS}/${encryptId(item.evento_id)}`}>
                                 {item.evento_titulo}
                             </Link>
                         </h4>
@@ -417,12 +417,12 @@ const BlogList = ({ StyleVar, tipo }) => {
                     </div>
                     <div className="content">
                         <ul className="rn-meta-list">
-                            <li><Link to={`/`}>{tipo}</Link></li>
+                            <li><Link to={`/detalle/${TIPOS.VIDEOS}/${encryptId(item.video_id)}`}>{tipo}</Link></li>
                             <li className="separator">/</li>
                             <li>{tipo}</li>
                         </ul>
                         <h4 className="title">
-                            <Link to={`/`}>
+                            <Link to={`/detalle/${TIPOS.VIDEOS}/${encryptId(item.video_id)}`}>
                                 {item.video_titulo}
                             </Link>
                         </h4>

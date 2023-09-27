@@ -96,6 +96,12 @@ const Detalle = () => {
 
     if(!loading_convocatorias && !loading_cursos && !loading_eventos && !loading_gacetas && !loading_images && !loading_institucion && !loading_ofertas && !loading_publicaciones && !loading_servicios && !loading_static_data && !loading_videos){                
 
+        const convocatorias_cat = convocatorias.filter((e) => e.tipo_conv_comun.tipo_conv_comun_titulo === TIPOS.CONVOCATORIAS);
+        const comunicados_cat = convocatorias.filter((e) => e.tipo_conv_comun.tipo_conv_comun_titulo === TIPOS.COMUNICADOS);
+        const avisos_cat = convocatorias.filter((e) => e.tipo_conv_comun.tipo_conv_comun_titulo === TIPOS.AVISOS);
+        const cursos_cat = cursos.filter((e) => e.tipo_curso_otro.tipo_conv_curso_nombre === TIPOS.CURSOS);
+        const seminarios_cat = cursos.filter((e) => e.tipo_curso_otro.tipo_conv_curso_nombre === TIPOS.SEMINARIOS);
+
         var item = null
         if(cat === TIPOS.SERVICIOS) item = servicios.find((e) => e.serv_id === parseInt(decryptId(id),10)); 
         if(cat === TIPOS.OFERTAS_ACADEMICAS) item = ofertas.find((e) => e.ofertas_id === parseInt(decryptId(id),10));
@@ -103,8 +109,8 @@ const Detalle = () => {
         if(cat === TIPOS.GACETAS) item = gacetas.find((e) => e.gaceta_id === parseInt(decryptId(id),10));
         if(cat === TIPOS.EVENTOS) item = eventos.find((e) => e.evento_id === parseInt(decryptId(id),10));
         if(cat === TIPOS.VIDEOS) item = videos.find((e) => e.video_id === parseInt(decryptId(id),10));
-
-        console.log("item",item);
+        if(cat === TIPOS.CONVOCATORIAS || cat === TIPOS.COMUNICADOS || cat === TIPOS.AVISOS) item = convocatorias.find((e) => e.idconvocatorias === parseInt(decryptId(id),10));
+        if(cat === TIPOS.CURSOS || cat === TIPOS.SEMINARIOS) item = cursos.find((e) => e.iddetalle_cursos_academicos === parseInt(decryptId(id),10))
 
         return (
             <>
@@ -112,10 +118,10 @@ const Detalle = () => {
                 
                 <Layout>
                     <BreadcrumbOne 
-                        title="Crismas"
+                        title={cat}
                         rootUrl="/"
-                        parentUrl="Home"
-                        currentUrl="Blog Grid Sidebar"
+                        parentUrl="PRINCIPAL"
+                        currentUrl={cat}
                     />
                     <div className="main-content">
                         {/* Start Blog Area  */}
@@ -145,7 +151,19 @@ const Detalle = () => {
                                             <div className="rbt-single-widget widget_categories mt--40">
                                                 <h3 className="title">Categories</h3>
                                                 <div className="inner">
-                                                    <SideCategories />
+                                                    <SideCategories 
+                                                        servicios={servicios} 
+                                                        ofertas={ofertas} 
+                                                        publicaciones={publicaciones} 
+                                                        gacetas={gacetas} 
+                                                        eventos={eventos} 
+                                                        videos={videos}
+                                                        convocatorias={convocatorias_cat}
+                                                        comunicados={comunicados_cat}
+                                                        avisos={avisos_cat}
+                                                        cursos={cursos_cat}
+                                                        seminarios={seminarios_cat}
+                                                    />
                                                 </div>
                                             </div>
                                             {/* End Single Widget  */}
@@ -154,7 +172,7 @@ const Detalle = () => {
                                             <div className="rbt-single-widget widget_recent_entries mt--40">
                                                 <h3 className="title">Post</h3>
                                                 <div className="inner">
-                                                    <SidebarPost />
+                                                    <SidebarPost cat/>
                                                 </div>
                                             </div>
                                             {/* End Single Widget  */}
