@@ -2,34 +2,25 @@ import React from 'react';
 import {flatDeep, slugify, containsObject} from '../../../utils';
 import BlogListData from "../../../data/blog/BlogList.json";
 import {Link} from "react-router-dom";
+import { TIPOS } from '../../../types/types';
 
 
 const SidebarTag = () => {
-    const tags = BlogListData.map(item => {
-        return item.tags;
-    });
-    let singleTagArray = flatDeep(tags);
-    let tagsData = [];
-    singleTagArray.forEach(tag => {
-        const obj = {
-            title: tag.trim(),
-            slug: slugify(tag)
-        }
-        const objIndex = containsObject(obj, tagsData);
-        if(objIndex !== -1){
-            tagsData[objIndex] = {
-                title: tag.trim(),
-                slug: slugify(tag)
-            }
-        } else {
-            tagsData.push(obj);
-        }
-    })
+    const links = [
+        {title: "Calendario Académico",link:`/academia/${TIPOS.CALENDARIO}`},
+        {title: "Horario",link:`/academia/${TIPOS.HORARIO}`},
+        {title: "Plan de Estudio",link:`/academia/${TIPOS.PLANESTUDIO}`},
+        {title: "Reglamento",link:`/academia/${TIPOS.REGLAMENTO}`},
+        {title: "Convenios Institucionales",link:`/academia/${TIPOS.CONVENIOS}`},
+        {title: "Pasantias",link:`/academia/${TIPOS.PASANTIAS}`},
+        {title: "Trabajos Dirigidos",link:`/academia/${TIPOS.TRABAJOS}`},
+        {title: "Instituto de Investigacion",link:`/academia/${TIPOS.INSTITUTO_INVESTIGACION}`},
+    ]
     return (
         <ul className="tagcloud">
-            {tagsData.map((tag) => {
+            {links.map((link, index) => {
                 return(
-                    <Link key={tag.slug} to={process.env.PUBLIC_URL + `/tag/${tag.slug}`}>{tag.title}</Link>
+                    <Link key={index} to={link.link}>{link.title}</Link>
                 )
             })}
         </ul>

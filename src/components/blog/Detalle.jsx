@@ -103,14 +103,20 @@ const Detalle = () => {
         const seminarios_cat = cursos.filter((e) => e.tipo_curso_otro.tipo_conv_curso_nombre === TIPOS.SEMINARIOS);
 
         var item = null
-        if(cat === TIPOS.SERVICIOS) item = servicios.find((e) => e.serv_id === parseInt(decryptId(id),10)); 
-        if(cat === TIPOS.OFERTAS_ACADEMICAS) item = ofertas.find((e) => e.ofertas_id === parseInt(decryptId(id),10));
-        if(cat === TIPOS.PUBLICACIONES) item = publicaciones.find((e) => e.publicaciones_id === parseInt(decryptId(id),10));
-        if(cat === TIPOS.GACETAS) item = gacetas.find((e) => e.gaceta_id === parseInt(decryptId(id),10));
-        if(cat === TIPOS.EVENTOS) item = eventos.find((e) => e.evento_id === parseInt(decryptId(id),10));
-        if(cat === TIPOS.VIDEOS) item = videos.find((e) => e.video_id === parseInt(decryptId(id),10));
-        if(cat === TIPOS.CONVOCATORIAS || cat === TIPOS.COMUNICADOS || cat === TIPOS.AVISOS) item = convocatorias.find((e) => e.idconvocatorias === parseInt(decryptId(id),10));
-        if(cat === TIPOS.CURSOS || cat === TIPOS.SEMINARIOS) item = cursos.find((e) => e.iddetalle_cursos_academicos === parseInt(decryptId(id),10))
+        var post = null
+        if(cat === TIPOS.SERVICIOS){ item = servicios.find((e) => e.serv_id === parseInt(decryptId(id),10));post = servicios.slice(-3);}
+        if(cat === TIPOS.OFERTAS_ACADEMICAS){ item = ofertas.find((e) => e.ofertas_id === parseInt(decryptId(id),10));post = ofertas.slice(-3);}
+        if(cat === TIPOS.PUBLICACIONES){ item = publicaciones.find((e) => e.publicaciones_id === parseInt(decryptId(id),10));post = publicaciones.slice(-3);}
+        if(cat === TIPOS.GACETAS){ item = gacetas.find((e) => e.gaceta_id === parseInt(decryptId(id),10));post = gacetas.slice(-3);}
+        if(cat === TIPOS.EVENTOS){ item = eventos.find((e) => e.evento_id === parseInt(decryptId(id),10));post = eventos.slice(-3);}
+        if(cat === TIPOS.VIDEOS){ item = videos.find((e) => e.video_id === parseInt(decryptId(id),10));post = videos.slice(-3);}
+        if(cat === TIPOS.CONVOCATORIAS || cat === TIPOS.COMUNICADOS || cat === TIPOS.AVISOS){ item = convocatorias.find((e) => e.idconvocatorias === parseInt(decryptId(id),10));}
+        if(cat === TIPOS.CURSOS || cat === TIPOS.SEMINARIOS){ item = cursos.find((e) => e.iddetalle_cursos_academicos === parseInt(decryptId(id),10))}
+        if(cat === TIPOS.CONVOCATORIAS){ post = convocatorias_cat.slice(-3);}
+        if(cat === TIPOS.COMUNICADOS){ post = comunicados_cat.slice(-3);}
+        if(cat === TIPOS.AVISOS){ post = avisos_cat.slice(-3); }   
+        if(cat === TIPOS.CURSOS){ post = cursos_cat.slice(-3); }   
+        if(cat === TIPOS.SEMINARIOS){ post = seminarios_cat.slice(-3); }        
 
         return (
             <>
@@ -128,28 +134,28 @@ const Detalle = () => {
                         <div className="rn-blog-area rn-section-gap">
                             <div className="container">
                                 <div className="row row--30">
-                                    <div className="col-lg-8">
+                                    <div className="col-lg-9">
                                         <div className="row mt_dec--30">
                                             <BlogDetailsContent cat={cat} item={item}/>
                                         </div>
                                     </div>
                                     
-                                    <div className="col-lg-4 mt_md--40 mt_sm--40">
+                                    <div className="col-lg-3 mt_md--40 mt_sm--40">
                                         <aside className="rwt-sidebar">
     
-                                            <div className="rbt-single-widget widget_search mt--40">
+                                            {/* <div className="rbt-single-widget widget_search mt--40">
                                                 <div className="inner">
                                                     <form className="blog-search" action="#">
                                                         <input type="text" placeholder="Search ..." />
                                                         <button className="search-button"><FaSistrix /></button>
                                                     </form>
                                                 </div>
-                                            </div>
+                                            </div> */}
     
     
                                             {/* Start Single Widget  */}
                                             <div className="rbt-single-widget widget_categories mt--40">
-                                                <h3 className="title">Categories</h3>
+                                                <h3 className="title">Categorias</h3>
                                                 <div className="inner">
                                                     <SideCategories 
                                                         servicios={servicios} 
@@ -170,24 +176,12 @@ const Detalle = () => {
     
                                             {/* Start Single Widget  */}
                                             <div className="rbt-single-widget widget_recent_entries mt--40">
-                                                <h3 className="title">Post</h3>
+                                                <h3 className="title">lo Ultimo en {cat}</h3>
                                                 <div className="inner">
-                                                    <SidebarPost cat/>
+                                                    <SidebarPost cat={cat} post={post}/>
                                                 </div>
                                             </div>
-                                            {/* End Single Widget  */}
-    
-                                           
-    
-                                            {/* Start Single Widget  */}
-                                            <div className="rbt-single-widget widget_archive mt--40">
-                                                <h3 className="title">Archives</h3>
-                                                <div className="inner">
-                                                    <SidebarArchive />
-                                                </div>
-                                            </div>
-                                            {/* End Single Widget  */}
-    
+                                            {/* End Single Widget  */}                                                                                              
     
                                             {/* Start Single Widget  */}
                                             <div className="rbt-single-widget widget_tag_cloud mt--40">

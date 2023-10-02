@@ -1,34 +1,34 @@
-import React from 'react';
+import React from "react";
 import ScrollAnimation from "react-animate-on-scroll";
 
-
-const SlpitOne = ({title, description, img}) => {
+const SlpitOne = ({ title, description, img, link }) => {
     return (
-            <div className="rn-splite-style">
-                <div className="split-wrapper">
-                        <div className="row no-gutters radius-10 align-items-center">
-                            <div className="col-lg-12 col-xl-6 col-12">
-                                <div className="thumbnail image-left-content">
-                                    <img src={img} alt="split Images" />
-                                </div>
-                            </div>
-                            <div className="col-lg-12 col-xl-6 col-12">
-                                <div className="split-inner">
-                                    <ScrollAnimation 
-                                    animateIn="fadeInUp"
-                                    animateOut="fadeInOut"
-                                    animateOnce={true}>
-                                        <h4 className="title">{title}</h4>
-                                    </ScrollAnimation>
-                                    <ScrollAnimation 
-                                    animateIn="fadeInUp"
-                                    animateOut="fadeInOut"
-                                    animateOnce={true}>
-                                    <p className="description">{description}</p>
-                                    </ScrollAnimation>
+        <div className="rn-splite-style">
+            <div className="split-wrapper">
+                <div className="row no-gutters radius-10 align-items-center">
+                    <div className="col-lg-12 col-xl-6 col-12">
+                        <div className="thumbnail image-left-content">
+                            <img src={img} alt="split Images" />
+                        </div>
+                    </div>
+                    <div className="col-lg-12 col-xl-6 col-12">
+                        <div className="split-inner">
+                            <ScrollAnimation
+                                animateIn="fadeInUp"
+                                animateOut="fadeInOut"
+                                animateOnce={true}
+                            >
+                                <h4 className="title">{title}</h4>
+                            </ScrollAnimation>
+                            <ScrollAnimation
+                                animateIn="fadeInUp"
+                                animateOut="fadeInOut"
+                                animateOnce={true}
+                            >
+                                <p className="description">{description}</p>
+                            </ScrollAnimation>
 
-                                    
-                                    {/* <ScrollAnimation 
+                            {/* <ScrollAnimation 
                                     animateIn="fadeInUp"
                                     animateOut="fadeInOut"
                                     animateOnce={true}>
@@ -47,12 +47,31 @@ const SlpitOne = ({title, description, img}) => {
                                             <a className="btn-default" href="/contact">Contact With Us</a>
                                         </div>
                                     </ScrollAnimation> */}
+                            <ScrollAnimation
+                                animateIn="fadeInUp"
+                                animateOut="fadeInOut"
+                                animateOnce={true}
+                            >
+                                <div
+                                    className="about-btn mt--30"
+                                    style={{ textAlign: "right" }}
+                                >
+                                    <a
+                                        className="btn-default"
+                                        href={link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Descargar PDF
+                                    </a>
                                 </div>
+                            </ScrollAnimation>
                         </div>
                     </div>
                 </div>
             </div>
-    )
-}
+        </div>
+    );
+};
 
-export default SlpitOne
+export default SlpitOne;

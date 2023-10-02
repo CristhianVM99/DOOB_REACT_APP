@@ -46,7 +46,7 @@ const BlogDetailsContent = ({cat, item}) => {
                                     <li><FiUser /><Link to={"/"}>{cat}</Link></li>
                                     <li><FiCalendar />{`data.date`}</li>
                                 </ul> */}
-                                <div className="thumbnail alignwide mt--60 mr--5">
+                                <div className="thumbnail alignwide mt--60 mr--5 ml--5">
                                     <img className="w-100 radius" src={`${process.env.REACT_APP_ROOT_API}/Carrera/Servicios/${item.serv_imagen}`} alt="Blog Images" />
                                 </div>
                             </div>
@@ -100,7 +100,7 @@ const BlogDetailsContent = ({cat, item}) => {
                                 <div className="page-title text-center">
                                     <h1 className="theme-gradient">{item.ofertas_titulo}</h1>
                                 </div>                                
-                                <div className="thumbnail alignwide mt--60 mr--5">
+                                <div className="thumbnail alignwide mt--60 mr--5 ml--5">
                                     <img className="w-100 radius" src={`${process.env.REACT_APP_ROOT_API}/Carrera/OfertasAcademicas/${item.ofertas_imagen}`} alt="Blog Images" />
                                 </div>
                             </div>
@@ -141,7 +141,7 @@ const BlogDetailsContent = ({cat, item}) => {
                                 <div className="page-title text-center">
                                     <h1 className="theme-gradient">{item.publicaciones_titulo}</h1>
                                 </div>                                
-                                <div className="thumbnail alignwide mt--60 mr--5">
+                                <div className="thumbnail alignwide mt--60 mr--5 ml--5">
                                     <img className="w-100 radius" src={`${process.env.REACT_APP_ROOT_API}/Publicaciones/${item.publicaciones_imagen}`} alt="Blog Images" />
                                 </div>
                             </div>
@@ -219,11 +219,10 @@ const BlogDetailsContent = ({cat, item}) => {
                                 <div className="page-title text-center">
                                     <h1 className="theme-gradient">{item.video_titulo}</h1>
                                 </div>                                
-                                <div className="thumbnail alignwide mt--60 mr--5">
+                                <div className="thumbnail alignwide mt--60 mr--5 ml--5">
                                 <ReactPlayer 
                                     url={item.video_enlace} 
                                     className='react-player'
-                                    playing
                                     width='100%'
                                     height='400px'
                                 />
@@ -256,7 +255,7 @@ const BlogDetailsContent = ({cat, item}) => {
                                 <div className="page-title text-center">
                                     <h1 className="theme-gradient">{item.con_titulo}</h1>
                                 </div>                                
-                                <div className="thumbnail alignwide mt--60 mr--5">
+                                <div className="thumbnail alignwide mt--60 mr--5 ml--5">
                                     <img className="w-100 radius" src={`${process.env.REACT_APP_ROOT_API}/Convocatorias/${item.con_foto_portada}`} alt="Blog Images" />                                
                                 </div>
                             </div>
@@ -292,7 +291,7 @@ const BlogDetailsContent = ({cat, item}) => {
                                 <div className="page-title text-center">
                                     <h1 className="theme-gradient">{item.det_titulo}</h1>
                                 </div>                                
-                                <div className="thumbnail alignwide mt--60 mr--5">
+                                <div className="thumbnail alignwide mt--60 mr--5 ml--5">
                                     <img className="w-100 radius" src={`${process.env.REACT_APP_ROOT_API}/Cursos/${item.det_img_portada}`} alt="Blog Images" />                                
                                 </div>
                             </div>

@@ -1,174 +1,149 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import SEO from "../common/SEO";
-//import HeaderTopNews from '../common/header/HeaderTopNews';
-import HeaderOne from '../common/header/HeaderOne';
-import FooterFour from '../common/footer/FooterFour';
-import BrandThree from '../elements/brand/BrandThree';
-import AboutFour from '../elements/about/AboutFour';
+import HeaderOne from "../common/header/HeaderOne";
+import FooterFour from "../common/footer/FooterFour";
+import BrandThree from "../elements/brand/BrandThree";
+import AboutFour from "../elements/about/AboutFour";
 import ServiceOne from "../elements/service/ServiceOne";
 import SectionTitle from "../elements/sectionTitle/SectionTitle";
 import CounterUpFour from "../elements/counterup/CounterUpFour";
 import TeamFour from "../elements/team/TeamFour";
 import TimelineTwo from "../elements/timeline/TimelineTwo";
 import Separator from "../elements/separator/Separator";
-import { getInstitucion, getStaticImages } from '../api/institucionAPI';
-import { useQuery } from '@tanstack/react-query';
-import RandomImage from '../utils/RandomImage';
+import { getInstitucion, getStaticImages } from "../api/institucionAPI";
+import { useQuery } from "@tanstack/react-query";
+import RandomImage from "../utils/RandomImage";
+import ConfigColorIcon from "../utils/ConfigColorIcon";
 
 const SobreNosotros = () => {
-
-    /* OBTENCION DE INFORMACION DEL STORE IMAGES */
+    /* obtención de la imágenes estáticas */
     const { isLoading: loading_images, data: images } = useQuery({
         queryKey: ["getStaticImages"],
         queryFn: getStaticImages,
     });
 
-    /* OBTENCION DE INFORMACION DEL STORE API */
+    /* obtención de los datos de la institución */
     const { isLoading: loading_institucion, data: institucion } = useQuery({
         queryKey: ["institucion"],
         queryFn: getInstitucion,
-    });    
+    });
 
-    if(!loading_images && !loading_institucion){
-        const { institucion_nombre, institucion_iniciales, institucion_historia } = institucion
+    /* configuraciones correspondientes a la pagina */
+    useEffect(() => {
+        /* configuración del color y icono de la pagina */
+        if (!loading_institucion) ConfigColorIcon(institucion);
+    });
 
-        const {portada} = institucion
-        const img = RandomImage(portada)
-        const img2 = RandomImage(portada)
+    if (!loading_images && !loading_institucion) {
+        const {
+            institucion_nombre,
+            institucion_iniciales,
+            institucion_historia,
+            portada,
+        } = institucion;
+
+        const img = RandomImage(portada);
+        const img2 = RandomImage(portada);
 
         return (
             <>
-                <SEO title="About Us" />
+                <SEO title={`${institucion_nombre} | SOBRE NOSOTROS`} />
                 <main className="page-wrapper">
-                    {/* <HeaderTopNews /> */}
-                    <HeaderOne btnStyle="btn-small round btn-icon" HeaderSTyle="header-transparent" />
-    
-                    {/* Start Slider Area  */}
-                    <div className="slider-area slider-style-1 height-850 bg_image" data-black-overlay="7" style={{backgroundImage: `url(${img ?? images.BgOne})`}}>
+                    {/* header principal  /> */}
+                    <HeaderOne
+                        btnStyle="btn-small round btn-icon"
+                        HeaderSTyle="header-transparent"
+                    />
+
+                    {/* inicio de banner */}
+                    <div
+                        className="slider-area slider-style-1 height-850 bg_image"
+                        data-black-overlay="7"
+                        style={{
+                            backgroundImage: `url(${img ?? images.BgOne})`,
+                        }}
+                    >
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-12">
                                     <div className="inner pt--80 text-center">
                                         <div>
-                                            <h3 className="rn-sub-badge"><span className="theme-gradient">{institucion_iniciales}</span></h3>
+                                            <h3 className="rn-sub-badge">
+                                                <span className="theme-gradient">
+                                                    {institucion_iniciales}
+                                                </span>
+                                            </h3>
                                         </div>
-                                        <h1 className="title display-one">{institucion_nombre} <br /> Sobre Nosotros</h1>
+                                        <h1 className="title display-one">
+                                            {institucion_nombre} <br /> Sobre
+                                            Nosotros
+                                        </h1>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* End Slider Area  */}
-    
-    
-                    {/* Start Service Area  */}
+                    {/* final de banner */}
+
+                    {/* inicio de historia e información sobre la institución */}
                     <div className="service-area rn-section-gapTop">
                         <div className="container">
                             <div className="row">
                                 <div className="col-lg-6">
                                     <div className="content">
-                                        <h3 className="title">historia de la carrera de <br /><strong>{institucion_nombre}</strong></h3>
+                                        <h3 className="title">
+                                            historia de la carrera de <br />
+                                            <strong>
+                                                {institucion_nombre}
+                                            </strong>
+                                        </h3>
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
-                                    <p className="mb--10" dangerouslySetInnerHTML={{ __html: institucion_historia }}></p>
+                                    <p
+                                        className="mb--10"
+                                        dangerouslySetInnerHTML={{
+                                            __html: institucion_historia,
+                                        }}
+                                    ></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {/* End Service Area  */}
-    
+                    {/* fin de la historia e información sobre la institución */}
+
                     <AboutFour image={img2 ?? images.BgTwo} />
-    
-                    {/* Start Brand Area  */}
-                    <div className="rwt-brand-area pb--60 pt--30">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-12 mt--10">
-                                    <BrandThree brandStyle="brand-style-2" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* End Brand Area  */}
-    
-    
+
                     <Separator />
-    
-                    {/* Start Service Area  */}
-                    <div className="rn-service-area rn-section-gap">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-12">
-                                    <SectionTitle
-                                        textAlign = "text-center"
-                                        radiusRounded = ""
-                                        subtitle = "What we can do for you"
-                                        title = "Services provide for you."
-                                        description = "There are many variations of passages of Lorem Ipsum available, <br /> but the majority have suffered alteration."
-                                        />
-                                </div>
-                            </div>
-                            <ServiceOne 
-                                serviceStyle = "service__style--1 bg-color-blackest radius mt--25"
-                                textAlign = "text-center"
-                                />
-                        </div>
-                    </div>
-                    {/* End Service Area  */}
-    
-                    <div className="rwt-timeline-area rn-section-gapBottom">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-12">
-                                    <TimelineTwo classVar="no-gradient"  />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <Separator />                    
-                    
-                    {/* Start Elements Area  */}
-                    <div className="rwt-counterup-area pb--100">
-                        <div className="container mt_dec--30">
-                            <CounterUpFour column="col-lg-3 col-md-6 col-sm-6 col-12" counterStyle="counter-style-4" textALign="text-center" />   
-                        </div>
-                    </div>
-                    {/* End Elements Area  */}
-    
-                    <Separator />
-    
+
                     {/* Start Elements Area  */}
                     <div className="rwt-team-area rn-section-gap">
                         <div className="container">
                             <div className="row mb--20">
                                 <div className="col-lg-12">
                                     <SectionTitle
-                                        textAlign = "text-center"
-                                        radiusRounded = ""
-                                        subtitle = "Our Corporate Team."
-                                        title = "Corporate Team Member."
-                                        description = ""
+                                        textAlign="text-center"
+                                        radiusRounded=""
+                                        subtitle="Nuestras..."
+                                        title="Autoridades"
+                                        description=""
                                     />
                                 </div>
                             </div>
-                            <TeamFour column="col-lg-6 col-xl-4 col-md-6 col-12 mt--30" teamStyle="team-style-three" />
+                            <TeamFour
+                                column="col-lg-6 col-xl-4 col-md-6 col-12 mt--30"
+                                teamStyle="team-style-three"
+                            />
                         </div>
                     </div>
                     {/* End Elements Area  */}
-    
-    
-    
-    
-    
-    
+
                     <FooterFour />
                 </main>
             </>
-        )
+        );
     }
-    return null
-}
+    return null;
+};
 
 export default SobreNosotros;

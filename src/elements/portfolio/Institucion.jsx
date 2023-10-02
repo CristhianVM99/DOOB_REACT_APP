@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import SEO from "../../common/SEO";
 import Layout from "../../common/Layout";
 import BreadcrumbOne from "../breadcrumb/BreadcrumbOne";
 import SectionTitle from "../sectionTitle/SectionTitle";
 import PortfolioOne from "./PortfolioOne";
-import { getGacetas, getInstitucion, getPublicaciones, getStaticDataInstitucion } from '../../api/institucionAPI';
-import { useQuery } from '@tanstack/react-query';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
-import { TIPOS } from '../../types/types';
-
-
+import {
+    getGacetas,
+    getInstitucion,
+    getPublicaciones,
+    getStaticDataInstitucion,
+} from "../../api/institucionAPI";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { TIPOS } from "../../types/types";
+import ConfigColorIcon from "../../utils/ConfigColorIcon";
 
 const Institucion = () => {
-
     /* OBTENCION DE INFORMACION DEL STORE STATICO CATEGORY */
     const { isLoading: loading_static_data, data: staticData } = useQuery({
         queryKey: ["staticDataInstitucion"],
@@ -38,52 +41,70 @@ const Institucion = () => {
     });
 
     const { cat } = useParams();
+
+    /* configuraciones correspondientes a la pagina */
+    useEffect(() => {
+        /* configuración del color y icono de la pagina */
+        if (!loading_institucion) ConfigColorIcon(institucion);
+    });
     var categoria = cat;
 
-    if(cat === TIPOS.PASANTIAS) categoria = "PASANTÍAS INSTITUCIONALES"
-    if(cat === TIPOS.CONVENIOS) categoria = "CONVENIOS DE LA INSTITUCIÓN"
-    if(cat === TIPOS.TRABAJOS) categoria = "TRABAJOS DIRIGIDOS"
-    if(cat === TIPOS.INSTITUTO_INVESTIGACION) categoria = "INSTITUTO DE INVESTIGACIÓN"
+    if (cat === TIPOS.PASANTIAS) categoria = "PASANTÍAS INSTITUCIONALES";
+    if (cat === TIPOS.CONVENIOS) categoria = "CONVENIOS DE LA INSTITUCIÓN";
+    if (cat === TIPOS.TRABAJOS) categoria = "TRABAJOS DIRIGIDOS";
+    if (cat === TIPOS.INSTITUTO_INVESTIGACION)
+        categoria = "INSTITUTO DE INVESTIGACIÓN";
 
-    if(!loading_gacetas && !loading_institucion && !loading_publicaciones && !loading_static_data){
-
+    if (
+        !loading_gacetas &&
+        !loading_institucion &&
+        !loading_publicaciones &&
+        !loading_static_data
+    ) {
         const { institucion_nombre, institucion_iniciales } = institucion;
         const { txt_content_banner_institucion } = staticData;
 
         return (
             <>
-                <SEO title={`${institucion_nombre} | Institución`} />
+                <SEO title={`${institucion_nombre} | INSTITUCIÓN`} />
                 <Layout>
-    
-                    <BreadcrumbOne 
+                    <BreadcrumbOne
                         title={categoria}
                         rootUrl="/"
                         parentUrl="PRINCIPAL"
                         currentUrl={categoria}
                     />
-                    
+
                     <div className="main-content">
                         <div className="rwt-portfolio-area rn-section-gap">
                             <div className="container">
                                 <div className="row">
                                     <div className="col-lg-12">
-                                            <SectionTitle
-                                                textAlign = "text-left"
-                                                radiusRounded = ""
-                                                subtitle = {institucion_iniciales}
-                                                title = {institucion_nombre}
-                                                description = {txt_content_banner_institucion}
-                                            />
+                                        <SectionTitle
+                                            textAlign="text-left"
+                                            radiusRounded=""
+                                            subtitle={institucion_iniciales}
+                                            title={institucion_nombre}
+                                            description={
+                                                txt_content_banner_institucion
+                                            }
+                                        />
                                     </div>
                                 </div>
-                                <PortfolioOne Column="col-lg-6 col-md-6 col-sm-12 col-12 mt--30 portfolio" gacetas={gacetas} publicaciones={publicaciones} institucion={institucion} categoria={cat} />
+                                <PortfolioOne
+                                    Column="col-lg-6 col-md-6 col-sm-12 col-12 mt--30 portfolio"
+                                    gacetas={gacetas}
+                                    publicaciones={publicaciones}
+                                    institucion={institucion}
+                                    categoria={cat}
+                                />
                             </div>
                         </div>
                     </div>
                 </Layout>
             </>
-        )
+        );
     }
-    return null
-}
+    return null;
+};
 export default Institucion;

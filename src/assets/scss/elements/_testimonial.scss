@@ -40,7 +40,7 @@
                     letter-spacing: 0.5px;
                 }
             }
-        } 
+        }
         &.style-two {
             .inner {
                 .thumbnail {
@@ -55,8 +55,6 @@
         }
     }
 }
-
-
 
 /*-----------------------------
     Testimonial Style Two  
@@ -78,7 +76,7 @@
             top: 52px;
             z-index: -1;
         }
-      
+
         .form {
             display: block;
             font-size: 18px;
@@ -121,7 +119,13 @@
         }
     }
     .thumbnail {
-        background: linear-gradient(95deg, var(--color-primary) 15%, var(--color-tertiary) 45%, var(--color-pink) 75%, var(--color-secondary) 100%) 98% / 200% 100%;
+        background: linear-gradient(
+                95deg,
+                var(--color-primary),
+                var(--color-tertiary),
+                var(--color-secondary)
+            )
+            98% / 200% 100%;
         border-radius: 100%;
         padding: 10px;
         img {
@@ -129,4 +133,3 @@
         }
     }
 }
-

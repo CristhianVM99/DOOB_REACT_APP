@@ -9,8 +9,6 @@
     }
 }
 
-
-
 a,
 button {
     &.btn-default {
@@ -20,7 +18,12 @@ button {
         border-color: transparent;
         border-radius: 8px;
         background-color: transparent;
-        background: linear-gradient(95deg, var(--color-primary) 15%, var(--color-tertiary) 45%, var(--color-pink) 75%, var(--color-secondary) 100%) 95% / 200% 100%;
+        //background: linear-gradient(95deg, var(--color-primary) 15%, var(--color-tertiary) 45%, var(--color-pink) 75%, var(--color-secondary) 100%) 95% / 200% 100%;
+        background: linear-gradient(
+            to left,
+            var(--color-primary),
+            var(--color-secondary)
+        );
         transition-duration: 300ms;
         color: var(--color-white);
         font-size: 16px;
@@ -34,8 +37,6 @@ button {
         letter-spacing: 0.5px;
         width: auto;
 
-        
-
         &.btn-icon {
             .icon {
                 position: relative;
@@ -48,7 +49,7 @@ button {
             }
         }
         &:hover {
-            box-shadow: var(--shadow-primary);
+            box-shadow: var(--color-tertiary);
             -webkit-filter: brightness(125%);
             filter: brightness(125%);
             color: var(--color-white);
@@ -106,13 +107,14 @@ button {
                 line-height: 30px;
 
                 &::after {
-                    content: '';
+                    content: "";
                     position: absolute;
                     bottom: 0;
                     left: 0;
                     height: 1px;
                     background-color: currentColor;
-                    transition: background-color .25s ease-in-out, width .36s cubic-bezier(.51, .5, .07, .99);
+                    transition: background-color 0.25s ease-in-out,
+                        width 0.36s cubic-bezier(0.51, 0.5, 0.07, 0.99);
                     -webkit-backface-visibility: hidden;
                     backface-visibility: hidden;
                     width: 0px;
@@ -171,7 +173,6 @@ button {
                 line-height: 70px;
             }
         }
-
     }
 }
 
@@ -184,7 +185,7 @@ button {
         transition: 0.3s;
 
         &::after {
-            content: '';
+            content: "";
             position: absolute;
             bottom: 0;
             left: 0;
@@ -220,7 +221,6 @@ button {
     }
 }
 
-
 .rn-badge {
     display: inline-block;
     background-color: var(--color-primary);
@@ -246,7 +246,14 @@ button {
     z-index: 2;
     letter-spacing: 0.5px;
     &::before {
-        background: linear-gradient(95deg, var(--color-primary) 15%, var(--color-tertiary) 45%, var(--color-pink) 75%, var(--color-secondary) 100%) 95%/200% 100%;
+        background: linear-gradient(
+                95deg,
+                var(--color-primary) 15%,
+                var(--color-tertiary) 45%,
+                var(--color-pink) 75%,
+                var(--color-secondary) 100%
+            )
+            95%/200% 100%;
         content: "";
         width: 100%;
         height: 100%;
