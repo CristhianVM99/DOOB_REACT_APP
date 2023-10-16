@@ -19,7 +19,6 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { TIPOS } from "../../types/types";
 import sinRegistros from "../../common/SinRegistros";
 import ConfigColorIcon from "../../utils/ConfigColorIcon";
-//import { Document, Page, pdfjs } from "react-pdf";
 
 const Split = () => {
     /* OBTENCION DE INFORMACION DEL STORE API */
@@ -123,29 +122,10 @@ const Split = () => {
                             {/* Start Elements Area  */}
                             <div className="rwt-split-area rn-section-gap">
                                 <div className="wrapper">
-                                    {/* <div className="row">
-                                    <div className="col-lg-12 mb--40">
-                                        <SectionTitle
-                                            textAlign = "text-center"
-                                            radiusRounded = ""
-                                            subtitle = "Split"
-                                            title = "Split Style One"
-                                            description = ""
-                                        />
-                                    </div>
-                                </div> */}
-                                    {/* <Document
-                                    file={`${process.env.REACT_APP_ROOT_API}/Gaceta/${
-                                      item.gaceta_documento
-                                    }`}
-                                  >
-                                    <Page pageNumber={1} width={400} />
-                                </Document>                     */}
-                                    <span>{`${process.env.REACT_APP_ROOT_API}/Gaceta/${item.gaceta_documento}`}</span>
                                     <SlpitOne
                                         title={item.gaceta_titulo}
                                         description={content}
-                                        img={img ?? images.BgOne}
+                                        img="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png"
                                         link={`${process.env.REACT_APP_ROOT_API}/Gaceta/${item.gaceta_documento}`}
                                     />
                                 </div>

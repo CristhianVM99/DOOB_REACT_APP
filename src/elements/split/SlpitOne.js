@@ -8,7 +8,11 @@ const SlpitOne = ({ title, description, img, link }) => {
                 <div className="row no-gutters radius-10 align-items-center">
                     <div className="col-lg-12 col-xl-6 col-12">
                         <div className="thumbnail image-left-content">
-                            <img src={img} alt="split Images" />
+                            <img
+                                src={img}
+                                style={{ width: "400px", marginLeft: "100px" }}
+                                alt="split Images"
+                            />
                         </div>
                     </div>
                     <div className="col-lg-12 col-xl-6 col-12">
